@@ -5,6 +5,10 @@ const temp = document.querySelector('.temp')
 const weather = document.querySelector('.weather')
 const hiLow = document.querySelector('.hi-low')
 
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 window.addEventListener('load',changeBG)
 
 searchBox.addEventListener('keypress', (event) => {
@@ -22,17 +26,21 @@ function getWeatherInfo() {
         .then(data => {
             console.log(data);
 
-            city.innerHTML = data.name
-            let now = new Date();
-            let day = days[now.getDay()];
-            let month = months[now.getMonth()];
-            let date = now.getDate();
-            let year = now.getFullYear();
-            dateElem.innerHTML = `${day}, ${date} ${month} ${year}`;
-            temp.innerHTML = data.main.temp + '°f'
-            weather.innerHTML = data.weather[0].main
-            hiLow.innerHTML = data.main.temp_min + '°f' + '/' + data.main.temp_max + '°f'
+            putElem(data)
         })
+}
+
+function putElem(data){
+    city.innerHTML = data.name
+    let now = new Date();
+    let day = days[now.getDay()];
+    let month = months[now.getMonth()];
+    let date = now.getDate();
+    let year = now.getFullYear();
+    dateElem.innerHTML = `${day}, ${date} ${month} ${year}`;
+    temp.innerHTML = (data.main.temp - 283) + '°f'
+    weather.innerHTML = data.weather[0].main
+    hiLow.innerHTML = data.main.temp_min + '°f' + '/' + data.main.temp_max + '°f'
 }
 
 function changeBG() {
