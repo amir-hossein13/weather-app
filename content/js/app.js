@@ -5,10 +5,6 @@ const temp = document.querySelector('.temp')
 const weather = document.querySelector('.weather')
 const hiLow = document.querySelector('.hi-low')
 
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
 window.addEventListener('load',changeBG)
 
 searchBox.addEventListener('keypress', (event) => {
