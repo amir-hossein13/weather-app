@@ -38,9 +38,9 @@ function putElem(data){
     let date = now.getDate();
     let year = now.getFullYear();
     dateElem.innerHTML = `${day}, ${date} ${month} ${year}`;
-    temp.innerHTML = (data.main.temp - 283) + '°f'
+    temp.innerHTML = `${Math.floor(290 - data.main.temp)}°c`
     weather.innerHTML = data.weather[0].main
-    hiLow.innerHTML = data.main.temp_min + '°f' + '/' + data.main.temp_max + '°f'
+    hiLow.innerHTML = `${Math.floor(290-data.main.temp_min)}°c/${Math.floor(290-data.main.temp_max)} °c`
 }
 
 function changeBG() {
